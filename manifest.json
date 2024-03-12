@@ -3,7 +3,8 @@
 	"name": "WikiSearch",
 	"version": "0.0.1",
 	"minAppVersion": "0.15.0",
-	"description": "Wiki search capabilities for Obsidian.",
-	"author": "David Bohner & Luck_LATL",
+	"description": "An obsidian plugin to search, link to, and display wikimedia content in-app",
+	"author": "David Bohner, Luck_LATL",
+	"authorUrl": "https://github.com/BG3P/obsidian-wikisearch",
 	"isDesktopOnly": false
 }

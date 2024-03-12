@@ -4,11 +4,11 @@ import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Set
 // Remember to rename these classes and interfaces!
 
 interface WikiSearchPluginSettings {
-	mySetting: string;
+	testSetting: string;
 }
 
 const DEFAULT_SETTINGS: WikiSearchPluginSettings = {
-	mySetting: 'default'
+	testSetting: 'default'
 }
 
 export default class WikiSearchPlugin extends Plugin {
@@ -110,4 +110,29 @@ onChooseSuggestion(item: SearchEntry, evt: MouseEvent | KeyboardEvent): any {
 class SearchEntry {
 	title: string;
 	link: string;
+}
+class WikiSearchSettingTab extends PluginSettingTab {
+	plugin: WikiSearchPlugin;
+
+	constructor(app: App, plugin: WikiSearchPlugin) {
+		super(app, plugin);
+		this.plugin = plugin;
+	}
+
+	display(): void {
+		const {containerEl} = this;
+
+		containerEl.empty();
+
+		new Setting(containerEl)
+			.setName('Setting #1')
+			.setDesc('It\'s a secret')
+			.addText(text => text
+				.setPlaceholder('Enter your secret')
+				.setValue(this.plugin.settings.testSetting)
+				.onChange(async (value) => {
+					this.plugin.settings.testSetting = value;
+					await this.plugin.saveSettings();
+				}));
+	}
 }
